@@ -22,15 +22,39 @@
     <!-- Header -->
     <header class="app-header">
       <div class="brand">
-        <h1>Expense Tracker</h1>
+        <h1><a href="./york.html" style="text-decoration:none;color:inherit">Expense Tracker</a></h1>
         <p class="tag">Manage & visualize your spending</p>
       </div>
 
       <div class="header-actions">
         <button id="themeToggle" class="btn ghost" aria-label="Toggle theme">🌗</button>
-        <button id="exportCSV" class="btn secondary">Export CSV</button>
-        <button id="exportPDF" class="btn secondary">Export PDF</button>
-        <button id="clearAll" class="btn primary">Clear All</button>
+        <button id="exportCSV" class="btn secondary" title="Export all transactions as CSV">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px">
+            <path d="M12 3v12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M8 7l4-4 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round" />
+            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>CSV
+        </button>
+        <button id="exportPDF" class="btn secondary" title="Export reports as PDF">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px">
+            <path d="M7 3h7l5 5v11a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z" stroke="currentColor"
+              stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M13 3v6h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>PDF
+        </button>
+        <button id="clearAll" class="btn primary" title="Clear all transactions">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px">
+            <path d="M3 6h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8 6v12a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V6" stroke="currentColor" stroke-width="1.6"
+              stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M10 11v6M14 11v6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>Clear All
+        </button>
       </div>
     </header>
 

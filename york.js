@@ -120,7 +120,7 @@ const updateSummary = (list = transactions) => {
   expenseValue.style.color = expense > 0 ? 'var(--danger, #dc2626)' : 'var(--muted, #888)';
   balanceValue.style.color =
     balance > 0 ? 'var(--accent, #7c3aed)' :
-    balance < 0 ? 'var(--danger, #dc2626)' : 'var(--text, #222)';
+      balance < 0 ? 'var(--danger, #dc2626)' : 'var(--text, #222)';
 };
 
 const renderTransactions = () => {
@@ -194,11 +194,11 @@ const buildLine = (list = transactions) => {
   const now = new Date();
   for (let i = 7; i >= 0; i--) {
     const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-    map[d.toISOString().slice(0,7)] = map[d.toISOString().slice(0,7)] || 0;
+    map[d.toISOString().slice(0, 7)] = map[d.toISOString().slice(0, 7)] || 0;
   }
 
   list.forEach(t => {
-    const key = (t.date || '').slice(0,7) || new Date(t.date).toISOString().slice(0,7);
+    const key = (t.date || '').slice(0, 7) || new Date(t.date).toISOString().slice(0, 7);
     map[key] = (map[key] || 0) + (t.type === 'income' ? Number(t.amount) : -Number(t.amount));
   });
 
@@ -212,20 +212,20 @@ const buildLine = (list = transactions) => {
   const accent = getVar('--accent') || '#7c3aed';
   let bg = 'rgba(124,58,237,0.14)';
   try {
-    const hex = accent.replace(/\s/g,'');
+    const hex = accent.replace(/\s/g, '');
     if (hex[0] === '#') {
-      const r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+      const r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
       bg = `rgba(${r},${g},${b},0.14)`;
     }
-  } catch(e){}
+  } catch (e) { }
 
   lineChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: keys.map(k => { const [y,m] = k.split('-'); return new Date(y, m-1,1).toLocaleString('default',{month:'short', year:'numeric'}); }),
-      datasets: [{ label:'Cumulative Balance', data: cum, borderColor: accent, backgroundColor: bg, tension:0.3, fill:true }]
+      labels: keys.map(k => { const [y, m] = k.split('-'); return new Date(y, m - 1, 1).toLocaleString('default', { month: 'short', year: 'numeric' }); }),
+      datasets: [{ label: 'Cumulative Balance', data: cum, borderColor: accent, backgroundColor: bg, tension: 0.3, fill: true }]
     },
-    options: { responsive:true, plugins:{ legend:{ display:false } }, scales:{ x:{ ticks:{ color:getVar('--text') } }, y:{ ticks:{ color:getVar('--text') } } } }
+    options: { responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { color: getVar('--text') } }, y: { ticks: { color: getVar('--text') } } } }
   });
 };
 
@@ -264,9 +264,9 @@ clearAllBtn && clearAllBtn.addEventListener('click', () => {
 /* === CSV export === */
 exportCSVBtn && exportCSVBtn.addEventListener('click', () => {
   if (!transactions.length) return alert('No transactions to export.');
-  const rows = [['id','title','amount','type','date'], ...transactions.map(t => [t.id,t.title,t.amount,t.type,t.date])];
-  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
-  const blob = new Blob([csv], { type:'text/csv;charset=utf-8;' });
+  const rows = [['id', 'title', 'amount', 'type', 'date'], ...transactions.map(t => [t.id, t.title, t.amount, t.type, t.date])];
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(',')).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url; a.download = 'transactions.csv'; document.body.appendChild(a); a.click(); a.remove();
@@ -278,16 +278,16 @@ exportPDFBtn && exportPDFBtn.addEventListener('click', async () => {
   if (!transactions.length) return alert('No transactions to export.');
   try {
     const exportArea = document.getElementById('exportArea');
-    const canvas = await html2canvas(exportArea, { scale: 2, useCORS:true });
+    const canvas = await html2canvas(exportArea, { scale: 2, useCORS: true });
     const img = canvas.toDataURL('image/png');
 
     const { jsPDF } = window.jspdf;
-    const pdf = new jsPDF('p','mm','a4');
+    const pdf = new jsPDF('p', 'mm', 'a4');
     const pageW = pdf.internal.pageSize.getWidth();
     const imgProps = pdf.getImageProperties(img);
     const imgW = pageW - 20;
     const imgH = (imgProps.height * imgW) / imgProps.width;
-    pdf.addImage(img,'PNG',10,10,imgW,imgH);
+    pdf.addImage(img, 'PNG', 10, 10, imgW, imgH);
     pdf.save('expense_tracker.pdf');
   } catch (err) {
     console.error(err);
@@ -296,14 +296,14 @@ exportPDFBtn && exportPDFBtn.addEventListener('click', async () => {
 });
 
 /* === Newsletter modal === */
-const showModal = (title='🎉 Thank you for subscribing!', message='You’ve joined the Expense Tracker tips list. Look out for helpful emails soon.') => {
+const showModal = (title = '🎉 Thank you for subscribing!', message = 'You’ve joined the Expense Tracker tips list. Look out for helpful emails soon.') => {
   const modalTitle = document.getElementById('modalTitle');
   const modalMessage = document.getElementById('modalMessage');
   if (modalTitle) modalTitle.textContent = title;
   if (modalMessage) modalMessage.textContent = message;
 
   modalOverlay.classList.add('visible');
-  modalOverlay.setAttribute('aria-hidden','false');
+  modalOverlay.setAttribute('aria-hidden', 'false');
 
   if (modalTimer) clearTimeout(modalTimer);
   modalTimer = setTimeout(() => closeModal(), 8000);
@@ -311,7 +311,7 @@ const showModal = (title='🎉 Thank you for subscribing!', message='You’ve jo
 
 const closeModal = () => {
   modalOverlay.classList.remove('visible');
-  modalOverlay.setAttribute('aria-hidden','true');
+  modalOverlay.setAttribute('aria-hidden', 'true');
   if (modalTimer) { clearTimeout(modalTimer); modalTimer = null; }
 };
 
@@ -365,25 +365,25 @@ function handleDelete(id) {
   transactions = transactions.filter(t => t.id !== numericId);
   save();
   renderTransactions();
-  renderTransactionsTable?.(); 
+  renderTransactionsTable?.();
 }
 function handleEdit(id) {
   const numericId = Number(id);
   const tx = transactions.find(t => t.id === numericId);
   if (!tx) return alert('Transaction not found.');
   const newTitle = prompt('Edit Title:', tx.title);
-  if (newTitle === null) return; 
+  if (newTitle === null) return;
   const newAmountStr = prompt('Edit Amount:', tx.amount);
-  if (newAmountStr === null) return; 
+  if (newAmountStr === null) return;
   const newAmount = parseFloat(newAmountStr);
   if (isNaN(newAmount) || newAmount <= 0) return alert('Please enter a valid amount.');
   const newType = prompt('Edit Type (income/expense):', tx.type);
-  if (newType === null) return; 
+  if (newType === null) return;
   if (newType !== 'income' && newType !== 'expense') return alert('Type must be either "income" or "expense".');
   tx.title = newTitle.trim();
   tx.amount = Math.abs(newAmount);
   tx.type = newType;
   save();
   renderTransactions();
-  renderTransactionsTable?.(); 
+  renderTransactionsTable?.();
 }
