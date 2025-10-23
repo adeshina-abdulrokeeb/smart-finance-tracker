@@ -115,9 +115,8 @@ function updateSummary(list = transactions) {
   balanceValue.style.color = balance > 0 ? 'var(--accent)' : (balance < 0 ? 'var(--expense)' : 'var(--text)');
 }
 
-/* Build category (doughnut) */
+/* Build category */
 function buildCategoryChart(list = transactions) {
-  // group by title or by type — here we'll produce income vs expense, but also category by title prefix if available
   const categories = {};
   list.forEach(t => {
     const key = t.type === 'income' ? 'Income' : 'Expense';
@@ -130,7 +129,7 @@ function buildCategoryChart(list = transactions) {
   if (pieChart) pieChart.destroy();
   pieChart = new Chart(categoryCtx, {
     type: 'doughnut',
-    data: { labels, datasets: [{ data, backgroundColor: ['#10b981', '#ef4444'] }] },
+    data: { labels, datasets: [{ data, backgroundColor: ['#ef4444', '#10b981'] }] },
     options: { responsive: true, plugins: { legend: { position: 'bottom', labels: { color: getComputedStyle(document.documentElement).getPropertyValue('--text') } } } }
   });
 }
