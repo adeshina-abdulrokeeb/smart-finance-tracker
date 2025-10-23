@@ -1,0 +1,50 @@
+#transactionsTable thead th {
+  border-bottom: 1px dashed var(--glass);
+  padding-bottom: 10px;
+}
+
+#transactionsTable tbody tr td {
+  padding: 10px 6px;
+  border-bottom: 1px dashed var(--glass);
+  vertical-align: middle;
+  color: var(--text);
+}
+
+/* small badges for type */
+.badge {
+  display: inline-block;
+  padding: 6px 8px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+.badge.income {
+  color: #065f46;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+.badge.expense {
+  color: #7f1d1d;
+  background: rgba(239, 68, 68, 0.07);
+  border: 1px solid rgba(239, 68, 68, 0.12);
+}
+
+/* chart-card tweak for reports */
+.chart-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+/* responsive tweaks */
+@media (max-width: 900px) {
+  .report-controls {
+    grid-template-columns: 1fr;
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .filters {
+    width: 100%;
+  }
+}
