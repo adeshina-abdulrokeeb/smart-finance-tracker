@@ -367,3 +367,23 @@ function handleDelete(id) {
   renderTransactions();
   renderTransactionsTable?.(); 
 }
+function handleEdit(id) {
+  const numericId = Number(id);
+  const tx = transactions.find(t => t.id === numericId);
+  if (!tx) return alert('Transaction not found.');
+  const newTitle = prompt('Edit Title:', tx.title);
+  if (newTitle === null) return; 
+  const newAmountStr = prompt('Edit Amount:', tx.amount);
+  if (newAmountStr === null) return; 
+  const newAmount = parseFloat(newAmountStr);
+  if (isNaN(newAmount) || newAmount <= 0) return alert('Please enter a valid amount.');
+  const newType = prompt('Edit Type (income/expense):', tx.type);
+  if (newType === null) return; 
+  if (newType !== 'income' && newType !== 'expense') return alert('Type must be either "income" or "expense".');
+  tx.title = newTitle.trim();
+  tx.amount = Math.abs(newAmount);
+  tx.type = newType;
+  save();
+  renderTransactions();
+  renderTransactionsTable?.(); 
+}
