@@ -21,6 +21,11 @@
 
     <!-- Header -->
     <header class="app-header">
+      <button class="hamburger" aria-label="Toggle sidebar">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </button>
       <div class="brand">
         <h1><a href="./index.html" style="text-decoration:none;color:inherit">Expense Tracker</a></h1>
         <p class="tag">Manage & visualize your spending</p>
@@ -57,6 +62,17 @@
         </button>
       </div>
     </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="./index.html">Dashboard</a></li>
+          <li><a href="./reports.html">Reports</a></li>
+          <li><a href="./tips.html">Tips</a></li>
+        </ul>
+      </nav>
+    </aside>
 
     <!-- Main (export target) -->
     <main id="exportArea" class="container">
