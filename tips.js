@@ -255,3 +255,27 @@ if (toReveal.length) {
     header.style.zIndex = '1000';
   }
 })();
+
+const hamburger = document.querySelector('.hamburger:not(.sidebar-close)');
+const sidebar = document.querySelector('.sidebar');
+const sidebarClose = document.querySelector('.sidebar-close');
+
+// Toggle sidebar & hamburger
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  sidebar.classList.toggle('active');
+});
+
+// Also allow closing via X inside sidebar
+sidebarClose.addEventListener('click', () => {
+  sidebar.classList.remove('active');
+  hamburger.classList.remove('open');
+});
+
+// Optional: close sidebar when clicking outside
+document.addEventListener('click', e => {
+  if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+    sidebar.classList.remove('active');
+    hamburger.classList.remove('open');
+  }
+});

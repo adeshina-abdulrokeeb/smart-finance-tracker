@@ -247,7 +247,7 @@ async function exportPDF() {
 }
 
 /* Newsletter modal (same behavior) */
-const showModal = (title='🎉 Thank you!', message='Thanks — you are subscribed.') => {
+const showModal = (title='Thank you for subscribing!', message='You’ve joined the Expense Tracker tips list. Look out for helpful emails soon.') => {
   const modalTitle = document.getElementById('modalTitle');
   const modalMessage = document.getElementById('modalMessage');
   if (modalTitle) modalTitle.textContent = title;
@@ -255,7 +255,7 @@ const showModal = (title='🎉 Thank you!', message='Thanks — you are subscrib
   modalOverlay.classList.add('visible');
   modalOverlay.setAttribute('aria-hidden','false');
   if (modalTimer) clearTimeout(modalTimer);
-  modalTimer = setTimeout(() => closeModal(), 6000);
+  modalTimer = setTimeout(() => closeModal(), 8000);
 };
 const closeModal = () => {
   modalOverlay.classList.remove('visible');
@@ -329,3 +329,27 @@ if (toReveal.length) {
     header.style.zIndex = '1000';
   }
 })();
+
+const hamburger = document.querySelector('.hamburger:not(.sidebar-close)');
+const sidebar = document.querySelector('.sidebar');
+const sidebarClose = document.querySelector('.sidebar-close');
+
+// Toggle sidebar & hamburger
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  sidebar.classList.toggle('active');
+});
+
+// Also allow closing via X inside sidebar
+sidebarClose.addEventListener('click', () => {
+  sidebar.classList.remove('active');
+  hamburger.classList.remove('open');
+});
+
+// Optional: close sidebar when clicking outside
+document.addEventListener('click', e => {
+  if (!sidebar.contains(e.target) && !hamburger.contains(e.target)) {
+    sidebar.classList.remove('active');
+    hamburger.classList.remove('open');
+  }
+});

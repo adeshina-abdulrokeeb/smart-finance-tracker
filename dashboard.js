@@ -296,7 +296,7 @@ exportPDFBtn && exportPDFBtn.addEventListener('click', async () => {
 });
 
 /* === Newsletter modal === */
-const showModal = (title = '🎉 Thank you for subscribing!', message = 'You’ve joined the Expense Tracker tips list. Look out for helpful emails soon.') => {
+const showModal = (title = 'Thank you for subscribing!', message = 'You’ve joined the Expense Tracker tips list. Look out for helpful emails soon.') => {
   const modalTitle = document.getElementById('modalTitle');
   const modalMessage = document.getElementById('modalMessage');
   if (modalTitle) modalTitle.textContent = title;

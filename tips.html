@@ -17,6 +17,11 @@
   <div class="app">
     <!-- Header -->
     <header class="app-header">
+      <button class="hamburger" aria-label="Toggle sidebar">
+        <span class="bar bar1"></span>
+        <span class="bar bar2"></span>
+        <span class="bar bar3"></span>
+      </button>
       <div class="brand">
         <h1><a href="./index.html" style="text-decoration:none;color:inherit">Expense Tracker</a></h1>
         <p class="tag">Manage & visualize your spending</p>
@@ -53,6 +58,17 @@
         </button>
       </div>
     </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <nav>
+        <ul>
+          <li><a href="./index.html">Dashboard</a></li>
+          <li><a href="./reports.html">Reports</a></li>
+          <li><a href="./tips.html">Tips</a></li>
+        </ul>
+      </nav>
+    </aside>
 
     <!-- Main -->
     <main id="exportArea" class="container">
@@ -184,7 +200,7 @@
     <footer class="footer">
       <div class="footer-content">
         <div class="footer-section about fade-up">
-          <h4>Expense Tracker</h4>
+          <h4><a href="./index.html" style="text-decoration:none;color:inherit;">Expense Tracker</a></h4>
           <p>Track, manage and visualize your spending with ease.</p>
         </div>
 
@@ -195,8 +211,8 @@
             <li><a href="./reports.html" target="_self">Reports</a></li>
             <li><a href="./tips.html" target="_self">Tips</a></li>
             <li><a
-                href="https://wa.me/2349049666975?text=Hello%20AbdulRokeeb%2C%20I%20would%20like%20to%20connect%20with%20you"
-                target="_blank">Contact</a></li>
+                href="https://wa.me/2349049666975?text=Hello%20AbdulRokeeb%2C%20I%20would%20like%20to%20connect%20with%20you.%20My%20name%20is%20__________"
+                target="_blank" rel="noopener noreferrer">Contact</a></li>
           </ul>
         </div>
 
