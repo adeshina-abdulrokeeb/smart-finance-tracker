@@ -1,3 +1,30 @@
+#searchInput {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--glass, rgba(255, 255, 255, 0.2));
+  background: var(--card, rgba(255, 255, 255, 0.6));
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(6px);
+}
+
+[data-theme="dark"] #searchInput {
+  background: var(--card);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+}
+
+::placeholder {
+  color: var(--muted, #999);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+#searchInput:focus::placeholder {
+  opacity: 0.4;
+}
+
 #transactionsTable thead th {
   border-bottom: 1px dashed var(--glass);
   padding-bottom: 10px;

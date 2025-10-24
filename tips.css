@@ -1,6 +1,29 @@
-/* tips.css - page specific tweaks, keeps York visual language */
+#searchInput {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid var(--glass, rgba(255, 255, 255, 0.2));
+  background: var(--card, rgba(255, 255, 255, 0.6));
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  outline: none;
+  backdrop-filter: blur(6px);
+}
 
-/* tips grid card */
+[data-theme="dark"] #searchInput {
+  background: var(--card);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+}
+
+::placeholder {
+  color: var(--muted, #999);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+#searchInput:focus::placeholder {
+  opacity: 0.4;
+}
 .tip-card {
   display: flex;
   gap: 12px;
@@ -192,21 +215,6 @@
   border: 1px solid rgba(124, 58, 237, 0.2);
   background: transparent;
   color: var(--text);
-}
-
-.btn.primary {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
-}
-
-.btn.primary:hover {
-  transform: scale(1.05);
-  background: #6d28d9;
 }
 
 /* Community Tips */
