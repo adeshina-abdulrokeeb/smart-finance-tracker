@@ -132,8 +132,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 80px;
-  padding: 0 50px;
+  height: auto;
+  padding: 20px 10px;
+  flex: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+  gap: 12px;
 }
 .brand h1 {
   font-size: 1.15rem;
@@ -143,12 +147,124 @@ body {
   font-size: 0.85rem;
 }
 
+@media (max-width: 640px) {
+  .app-header {
+    padding: 0 20px;
+    height: 70px;
+    gap: 8px;
+  }
+
+  .brand h1 {
+    font-size: 0.75rem;
+  }
+
+  .brand .tag {
+    font-size: 0.75rem;
+  }
+
+  .header-actions {
+    gap: 6px;
+  }
+
+  .btn {
+    padding: 6px 8px;
+    font-size: 0.75rem;
+  }
+
+  .btn svg {
+    width: 12px;
+    height: 12px;
+    margin-right: 4px;
+  }
+
+  .hamburger {
+    width: 24px;
+    height: 18px;
+  }
+
+  .hamburger span {
+    height: 2px;
+  }
+}
+
+@media (max-width: 520px) {
+  .app-header {
+    padding: 16px 8px;
+    height: auto;
+    gap: 6px;
+  }
+
+  .brand h1 {
+    font-size: 0.9rem;
+  }
+
+  .brand .tag {
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    padding: 5px 7px;
+    font-size: 0.7rem;
+  }
+
+  .btn svg {
+    width: 11px;
+    height: 11px;
+    margin-right: 3px;
+  }
+
+  .hamburger {
+    width: 22px;
+    height: 16px;
+  }
+
+  .hamburger span {
+    height: 2px;
+  }
+}
+@media (max-width: 420px) {
+  .app-header {
+    padding: 24px 12px;
+    height: auto;
+    gap: 4px;
+  }
+
+  .brand h1 {
+    font-size: 0.7rem;
+  }
+
+  .brand .tag {
+    display: none; 
+  }
+
+  .header-actions {
+    gap: 4px;
+  }
+
+  .btn {
+    padding: 4px 6px;
+    font-size: 0.68rem;
+  }
+
+  .hamburger {
+    width: 20px;
+    height: 20px;
+  }
+
+  .hamburger span {
+    height: 2px;
+  }
+  .btn svg {
+    display: none;
+  }
+}
+
 /* Buttons */
 .header-actions {
   display: flex;
   gap: 10px;
 }
-.btn {
+.btn.ghost, .btn.primary, .btn.secondary {
   border-radius: 8px;
   cursor: pointer;
   font-weight: 600;
@@ -474,7 +590,7 @@ select {
 /* Custom Dropdown Base */
 .custom-dropdown {
   position: relative;
-  width: 100%;
+  min-width: 160px;
   color: var(--text);
   cursor: pointer;
   border: 1.5px solid var(--glass);
