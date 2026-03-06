@@ -1,7 +1,7 @@
 const txForm = document.getElementById('txForm');
 const txTitle = document.getElementById('txTitle');
 const txAmount = document.getElementById('txAmount');
-const txType = document.getElementById('txType'); // hidden select
+const txType = document.getElementById('txType'); 
 
 const balanceValue = document.getElementById('balanceValue');
 const incomeValue = document.getElementById('incomeValue');
@@ -9,7 +9,7 @@ const expenseValue = document.getElementById('expenseValue');
 
 const transactionList = document.getElementById('transactionList');
 const searchInput = document.getElementById('searchInput');
-const typeFilter = document.getElementById('typeFilter'); // hidden select
+const typeFilter = document.getElementById('typeFilter');
 
 const themeToggle = document.getElementById('themeToggle');
 const exportCSVBtn = document.getElementById('exportCSV');
@@ -400,7 +400,7 @@ hamburger.addEventListener('click', () => {
 
 // Also allow closing via X inside sidebar
 sidebarClose.addEventListener('click', () => {
-  sidebar.classList.remove('active');
+  sidebar.classList.remove('active');z
   hamburger.classList.remove('open');
 });
 
